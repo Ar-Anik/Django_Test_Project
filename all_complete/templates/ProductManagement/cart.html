@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cart
+{% endblock title %}
+
+
+{% block change  %}
+    {% for search in cart.product.all %}
+
+       <div class="card bg-light mb-2`" >
+         <div class="row no-gutters">
+           <div class="col-md-4">
+          <img src="{{ search.image.url }}" class="card-img" alt="Sorry">
+        </div>
+
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ search.name }}</h5>
+            <p class="card-text">
+                {{ search.name }} <br>
+                {{ search.id }} <br>
+                {{ search.price }} <br>
+                {{ search.category }} <br>
+                {{ search.description }} <br>
+            </p>
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Option 1
+              </button>
+              <br>
+              <a href="{% url 'order-product' search.id %}" > <b> <mark> Payment on delivery </mark> </b> </a><br><br>
+
+              <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Option 2
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <form action="{% url 'bkash-order-product' search.id %}" method="POST">
+                  {% csrf_token %}
+                  <input name="transaction_id" type="text" placeholder="Bkash transaction ID" required>
+                  <button type="submit">Order with Bkash</button>
+              </form>
+
+              <br>
+              <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Option 3
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <form action="{% url 'rocket-order-product' search.id %}" method="POST">
+                  {% csrf_token %}
+                  <input name="transaction_id" type="text" placeholder="Rocket transaction ID" required>
+                  <button type="submit">Order with Rocket</button>
+              </form>
+              <br>
+              <a href="{% url 'delete-from-cart' search.id %}"> <mark> <b> Remove </b> </mark> </a>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    {% endfor %}
+
+    <h2>Total: {{ total }}</h2>
+
+{% endblock change %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create Profile
+{% endblock title %}
+
+{% block change %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form | crispy }} <br>
+
+        <input type="Submit" value="Insert">
+    </form>
+    <br>
+{% endblock change %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Product List
+{% endblock title %}
+
+{% block change %}
+    {% include 'slider.html' %}
+        {% csrf_token %}
+        <div class="row row-cols-1 row-cols-md-3">
+
+        {% for p in products %}
+
+
+        <div class="col mb-4">
+          <div class="card h-100" >
+            <img src="{{ p.image.url }}"class="card-img-top" alt="Sorry">
+            <div class="card-body">
+              <h5 class="card-title">{{ p.name }}</h5>
+              <p class="card-text">
+                  <h3>{{ p.price }}</h3>
+              </p>
+
+                <a href="{{ p.id }}">
+                    <button type="button" class="btn btn-outline-primary">Details</button>
+                </a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+
+    <div>
+    <br>
+    <h3> User count: {{ u_c }}   </h3>
+    <h3> Product count: {{ p_c }}   </h3>
+    <br>
+
+    </div>
+{% endblock change %}
