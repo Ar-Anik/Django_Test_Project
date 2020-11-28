@@ -27,6 +27,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('activate/<uidb64>/<token>/',user_views.activate,name='activate'),
 
+    path('sentemail/', user_views.email, name='sentemail'),
+
     path('myorders/', product_views.my_orders, name='my-orders'),
     path('', product_views.showProduct, name='products_list'),
     path('upload/', product_views.uploadProducts, name='upload_product'),

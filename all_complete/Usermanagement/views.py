@@ -8,7 +8,8 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.core.mail import message
+from django.core.mail import message, send_mail
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 
 from django.contrib.sites.shortcuts import get_current_site
@@ -18,6 +19,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 UserModel = get_user_model()
+
 
 # Create your views here.
 
@@ -104,3 +106,15 @@ def showprofile(request) :
         'profile' : profile
     }
     return render(request, 'UserManagement/view_profile.html', context)
+
+def email(request):
+    
+    if request.method == 'POST':
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        email = request.POST.get('email')
+        send_mail(subject, message, settings.EMAIL_HOST_USER,
+                  [email], fail_silently=False)
+        return render(request, 'UserManagement/sent_email_confirm.html', {'email': email})
+
+    return render(request, 'UserManagement/sent_email.html', {})
