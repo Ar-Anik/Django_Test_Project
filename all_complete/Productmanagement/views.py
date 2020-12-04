@@ -4,6 +4,7 @@ from .models import Product
 from .models import Cart
 from .models import Order
 from .models import Review
+from .models import FAQ
 from .forms import ProductForm
 from .forms import ReviewForm
 
@@ -224,3 +225,12 @@ def review_after_complete(request, product_id):
         'already_reviewed': already_reviewed
     }
     return render(request, 'ProductManagement/review.html', context)
+
+def Faq_details(request):
+    faq = FAQ.objects.filter(status=True).order_by('created_at')
+
+    context = {
+        'faq' : faq,
+    }
+
+    return render(request, 'ProductManagement/faq.html', context)

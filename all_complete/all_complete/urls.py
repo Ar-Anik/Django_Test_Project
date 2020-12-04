@@ -45,6 +45,8 @@ urlpatterns = [
     path('createprofile/', user_views.createprofile, name='createprofile'),
     path('viewprofile/', user_views.showprofile, name='viewprofile'),
 
-    path('review/<int:product_id>', product_views.review_after_complete, name='review')
+    path('review/<int:product_id>', product_views.review_after_complete, name='review'),
+
+    path('faq/', product_views.Faq_details, name='faq'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
