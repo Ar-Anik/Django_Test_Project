@@ -93,14 +93,24 @@ def createprofile(request) :
 
         return redirect('viewprofile')
 
+    try : 
+        value = Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        value = '0'
+
     context = {
-        'form' : form
+        'form' : form,
+        'value' : value,
     }
 
     return render(request, 'UserManagement/create_profile.html', context)
 
+
 def showprofile(request) :
-    profile = Profile.objects.get(user = request.user)
+    try :
+        profile = Profile.objects.get(user = request.user)
+    except Profile.DoesNotExist:
+        profile = print("Please Complete Your Profile To View")
 
     context = {
         'profile' : profile
