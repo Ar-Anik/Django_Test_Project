@@ -20,6 +20,8 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 UserModel = get_user_model()
 
+import requests
+import json
 
 # Create your views here.
 
@@ -128,3 +130,17 @@ def email(request):
         return render(request, 'UserManagement/sent_email_confirm.html', {'email': email})
 
     return render(request, 'UserManagement/sent_email.html', {})
+
+def postview(request):
+    api_request = requests.get("https://jsonplaceholder.typicode.com/posts")
+
+    try:
+        api = json.loads(api_request.content)
+    except:
+        api = "Error"
+    
+    context = {
+        'api' : api,
+    }
+
+    return render(request, 'UserManagement/api.html', context)

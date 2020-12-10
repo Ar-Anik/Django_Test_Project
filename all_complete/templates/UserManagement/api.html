@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    API
+{% endblock title %}
+
+{% block change %}
+    <br>
+    {% for p in api %}
+        <b> {{p.id}}. {{p.title}} </b> <br>
+        {{p.body}}
+        <br> <br>
+    {% endfor %}
+{% endblock change %}

@@ -48,5 +48,6 @@ urlpatterns = [
     path('review/<int:product_id>', product_views.review_after_complete, name='review'),
 
     path('faq/', product_views.Faq_details, name='faq'),
+    path('api/', user_views.postview, name='api'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
