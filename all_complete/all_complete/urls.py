@@ -30,9 +30,9 @@ urlpatterns = [
     path('sentemail/', user_views.email, name='sentemail'),
 
     path('myorders/', product_views.my_orders, name='my-orders'),
-    path('', product_views.showProduct, name='products_list'),
+    path('product/', product_views.showProduct, name='products_list'),
     path('upload/', product_views.uploadProducts, name='upload_product'),
-    path('<int:product_id>', product_views.showDetails, name='detail_view'),
+    path('product/<int:product_id>', product_views.showDetails, name='detail_view'),
     path('orderproduct/<int:product_id>', product_views.make_order, name='order-product'),
 
     path('cart/', product_views.view_cart, name='cart'),

@@ -11,7 +11,8 @@
         <div class="card bg-light mb-2`" >
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="{{ search.image.url }}" class="card-img" alt="Sorry">
+              <img src="{{ search.image.url }}" class="card-img" alt="Sorry"> 
+             <h1> <div class="fb-like" data-href="http://localhost:8000/product/{{search.id}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div> </h1>
             </div>
 
             <div class="col-md-8">
@@ -32,6 +33,8 @@
           </div>
         </div>
     <br> <br>
+        <div class="fb-comments" data-href="http://localhost:8000/product/{{search.id}}" data-numposts="10" data-width=""></div>
+    <br><br>
     <div class="container">
         {% for review in search.reviews.all %}
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
