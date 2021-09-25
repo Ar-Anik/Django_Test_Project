@@ -27,6 +27,10 @@ from django.contrib.auth.decorators import login_required
 #     }
 #     return render(request, 'ProductManagement/products.html', context)
 
+
+def home(request):
+    return redirect("products_list")
+
 def showProduct(request):
     
     products = Product.objects.all()
