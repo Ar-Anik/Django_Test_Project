@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Usermanagement',
     'crispy_forms',
     'chat',
+    'qr_code',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

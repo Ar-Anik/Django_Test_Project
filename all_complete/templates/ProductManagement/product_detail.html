@@ -2,6 +2,8 @@
 
 {% load crispy_forms_tags %}
 
+{% load qr_code %}
+
 {% block title %}
     Product Details
 {% endblock title %}
@@ -25,9 +27,10 @@
                     {{ search.category }} <br>
                     {{ search.description }} <br>
                 </p>
-                
+                  <b> For Product Details : </b><br>
+                  {%qr_from_text "http://localhost:8000/product/{{search.id}}" size=5 border=6 %}
+                  <br>
                   <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>
-
               </div>
             </div>
           </div>
@@ -35,6 +38,7 @@
     <br> <br>
         <div class="fb-comments" data-href="http://localhost:8000/product/{{search.id}}" data-numposts="10" data-width=""></div>
     <br><br>
+
     <div class="container">
         {% for review in search.reviews.all %}
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
