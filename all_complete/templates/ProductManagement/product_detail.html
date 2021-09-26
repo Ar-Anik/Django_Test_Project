@@ -15,6 +15,9 @@
             <div class="col-md-4">
               <img src="{{ search.image.url }}" class="card-img" alt="Sorry"> 
              <h1> <div class="fb-like" data-href="http://localhost:8000/product/{{search.id}}" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div> </h1>
+             <b> For Product Details : </b><br>
+             {%qr_from_text "http://localhost:8000/product/{{search.id}}" size=5 border=6 %}
+             <br>
             </div>
 
             <div class="col-md-8">
@@ -27,9 +30,6 @@
                     {{ search.category }} <br>
                     {{ search.description }} <br>
                 </p>
-                  <b> For Product Details : </b><br>
-                  {%qr_from_text "http://localhost:8000/product/{{search.id}}" size=5 border=6 %}
-                  <br>
                   <a href="{% url 'update-cart' search.id  %}" >Add to Cart</a>
               </div>
             </div>
