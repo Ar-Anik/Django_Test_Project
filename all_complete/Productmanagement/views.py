@@ -165,35 +165,36 @@ def make_order(request, product_id) :
 
     return redirect('cart')
 
-def bkash_order(request, product_id) :
-    product = get_object_or_404(Product, id=product_id)
+# def bkash_order(request, product_id) :
+#     product = get_object_or_404(Product, id=product_id)
 
-    order = Order(user=request.user, product=product)
+#     order = Order(user=request.user, product=product)
 
-    order.transaction_id = request.POST['transaction_id']
-    order.payment_options = 'Bkash'
-    order.save()
+#     order.transaction_id = request.POST['transaction_id']
+#     order.payment_options = 'Bkash'
+#     order.save()
 
-    cart = Cart.objects.get(user=request.user)
-    cart.product.remove(product)
-    cart.save()
+#     cart = Cart.objects.get(user=request.user)
+#     cart.product.remove(product)
+#     cart.save()
 
-    return redirect('cart')
+#     return redirect('cart')
 
-def rocket_order(request, product_id) :
-    product = get_object_or_404(Product, id=product_id)
+# def rocket_order(request, product_id) :
+#     product = get_object_or_404(Product, id=product_id)
 
-    order = Order(user=request.user, product=product)
+#     order = Order(user=request.user, product=product)
 
-    order.transaction_id = request.POST['transaction_id']
-    order.payment_options = 'Rocket'
-    order.save()
+#     order.transaction_id = request.POST['transaction_id']
+#     order.payment_options = 'Rocket'
+#     order.save()
 
-    cart = Cart.objects.get(user=request.user)
-    cart.product.remove(product)
-    cart.save()
+#     cart = Cart.objects.get(user=request.user)
+#     cart.product.remove(product)
+#     cart.save()
 
-    return redirect('cart')
+#     return redirect('cart')
+
 
 @login_required
 def review_after_complete(request, product_id):
@@ -238,3 +239,4 @@ def Faq_details(request):
     }
 
     return render(request, 'ProductManagement/faq.html', context)
+

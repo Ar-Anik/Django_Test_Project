@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'chat',
     'qr_code',
+    'django_sslcommerz',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -146,7 +147,7 @@ LOGOUT_REDIRECT_URL = 'login'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'giftkinibd@gmail.com'
-EMAIL_HOST_PASSWORD = 'anikdas@@@@'
+EMAIL_HOST_PASSWORD = 'dasonianik'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Giftkini team <giftkinibd@gmail.com>'
@@ -160,3 +161,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+
+DJANGO_SSLCOMMERZ = {
+    "default_store": {
+        "base_url": "https://sandbox.sslcommerz.com",
+        "store_id": 'giftk61ab3e2f5d1bf',
+        "store_passwd": 'giftk61ab3e2f5d1bf@ssl',
+    },
+}

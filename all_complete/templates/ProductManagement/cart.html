@@ -25,18 +25,25 @@
                 {{ search.description }} <br>
             </p>
 
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Option 1
-              </button>
+              {% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Proceed Way
+              </button> {% endcomment %}
               <br>
-              <a href="{% url 'order-product' search.id %}" > <b> <mark> Payment on delivery </mark> </b> </a><br><br>
+              <a href="{% url 'order-product' search.id %}" > <b> <mark> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Cash On Delivery
+              </button> </mark> </b> </a><br><br>
 
-              <!-- Button trigger modal -->
+              <a href="{% url 'sslcommerzinit' search.id %}" >  <b> <mark> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                 Payment For Order
+              </button> </mark> </b> </a><br><br>
+
+
+{% comment %}               <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
               Option 2
             </button>
-
-            <!-- Modal -->
+ {% endcomment %}
+   {% comment %}          <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -67,9 +74,9 @@
               <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
               Option 3
-            </button>
+            </button> {% endcomment %}
 
-            <!-- Modal -->
+{% comment %}             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -94,10 +101,13 @@
                   {% csrf_token %}
                   <input name="transaction_id" type="text" placeholder="Rocket transaction ID" required>
                   <button type="submit">Order with Rocket</button>
-              </form>
+              </form> {% endcomment %}
               <br>
-              <a href="{% url 'delete-from-cart' search.id %}"> <mark> <b> Remove </b> </mark> </a>
-
+              {% comment %} <a href="{% url 'delete-from-cart' search.id %}"> <mark> <b> Remove </b> </mark> </a> {% endcomment %}
+              
+              <a href="{% url 'delete-from-cart' search.id %}" > <b> <mark> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Remove From Cart
+            </button> </mark> </b> </a><br>
 
           </div>
         </div>

@@ -21,6 +21,9 @@ from Productmanagement import views as product_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.decorators.csrf import csrf_exempt
+from django_sslcommerz import views as sslviews
+
 urlpatterns = [
     path('', product_views.home, name='home'),
     path('admin/', admin.site.urls),
@@ -40,8 +43,8 @@ urlpatterns = [
     path('updatecart/<int:product_id>', product_views.update_cart, name='update-cart'),
     path('deletefromcart/<int:product_id>', product_views.delete_from_cart, name='delete-from-cart'),
 
-    path('bkash/<int:product_id>', product_views.bkash_order, name='bkash-order-product'),
-    path('rocket/<int:product_id>', product_views.rocket_order, name='rocket-order-product'),
+  #  path('bkash/<int:product_id>', product_views.bkash_order, name='bkash-order-product'),
+  #  path('rocket/<int:product_id>', product_views.rocket_order, name='rocket-order-product'),
 
     path('createprofile/', user_views.createprofile, name='createprofile'),
     path('viewprofile/', user_views.showprofile, name='viewprofile'),
@@ -50,5 +53,8 @@ urlpatterns = [
 
     path('faq/', product_views.Faq_details, name='faq'),
     path('api/', user_views.postview, name='api'),
+
+    path('sslcommerz', include('django_sslcommerz.urls')),
+    path("sslcommerz/init", csrf_exempt(sslviews.InitView.as_view()), name="sslcommerzinit")
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
